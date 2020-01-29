@@ -1,3 +1,3 @@
-# playground
+# Playground
 
-projects too small//not good enough for its own repository
+`Projects // Code` `too small // not good enough` for having an own Repository.
