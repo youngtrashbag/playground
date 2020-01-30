@@ -1,6 +1,6 @@
 #include "header.h"
 
-//constructor
+//constructors
 Data::Data()
 {
 	_id = 0;
