@@ -1,6 +1,6 @@
 #include "header.h"
 
-using namespace cv;
+//using namespace cv;
 
 int main(int argc, char* argv[])
 {
@@ -12,26 +12,30 @@ int main(int argc, char* argv[])
 	}
 
 	//set filepath/name as variable
-	char[] filePath = argv[1];
+	std::string filePath = argv[1];
 
-	Mat image;
+	cv::Mat image;
 
 	//read the file from the command line argument
-	image = imread(samples::findFile(filePath), IMREAD_COLOR);
+	image = cv::imread(cv::samples::findFile(filePath), cv::IMREAD_COLOR);
 
 	if(image.empty())
 	{
+		//image is empty, or may be another filetype
 		std::cout << "Image is Empty" << std::endl;
-		exit(IMG_EMTPY_ERR);
+		exit(IMG_EMPTY_ERR);
 	}
 
 	//create a window
-	namedWindow("Image: " + filePath, WINDOW_AUTOSIZE);
+	std::string windowTitle = "Image: " + filePath;
 
-	imshow("test", image);
+	//creating a window, that auto sizes
+	cv::namedWindow(windowTitle, cv::WINDOW_AUTOSIZE);
+
+	cv::imshow(windowTitle, image);
 
 	//wait for a keystroke
-	waitKey(0);
+	cv::waitKey(0);
 
 	//conventional
 	return 0;

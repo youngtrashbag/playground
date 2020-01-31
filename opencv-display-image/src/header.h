@@ -1,5 +1,6 @@
 //global includes
 #include <iostream>
+#include <string>
 
 //opencv includes
 #include <opencv2/core.hpp>
