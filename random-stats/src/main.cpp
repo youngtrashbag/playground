@@ -19,18 +19,48 @@ int main(int argc, char* argv[])
 	}
 
 	//random number between 0 and 1
-	int random_number = randombytes_uniform(2);
+	//int random_number = randombytes_uniform(2);
+	//std::cout << "Random number: " << random_number << std::endl;
 
-	std::cout << "Random number: " << random_number << std::endl;
+	//unsigned int iterations = 10;
+	//unsigned int maxValue = 10;
+	unsigned int iterations = 1;
+	unsigned int maxValue = 1;
 
-	//iterations, maxValue
-	int* randomArray = CreateRandomNumbers(10, 10);
-	int* distribution = GetDistribution(randomArray, 10);
-
-	for(int i=0; i<sizeof(distribution); i++)
+	if(argc == 3)
 	{
-		std::cout << "Num[" << i+1 << "]\nGen: " << distribution[i] << std::endl << std::endl;
+		iterations = atoi(argv[1]);
+		maxValue = atoi(argv[2]);
+
+		if(iterations < 1)
+		{
+			ErrorMessage(ERR_PARAM_TOO_SMALL, "Amount of Iterations entered is too small");
+		}
+		else if(iterations > 10000)
+		{
+			ErrorMessage(ERR_PARAM_TOO_BIG, "Amount of Iterations entered is too big");
+		}
+
+		if(maxValue < 1)
+		{
+			ErrorMessage(ERR_PARAM_TOO_SMALL, "MaxValue is too small");
+		}
+		else if(maxValue > 25)
+		{
+			ErrorMessage(ERR_PARAM_TOO_BIG, "MaxValue is too big");
+		}
+
 	}
+
+	int* randomArray = CreateRandomNumbers(iterations, maxValue);
+	int* distribution = GetDistribution(randomArray, maxValue);
+
+	for(int i=0; i< sizeof(randomArray); i++)
+	{
+		std::cout << randomArray[i] << std::endl;
+	}
+
+	DisplayDistribution(distribution);
 
 	return 0;
 }
