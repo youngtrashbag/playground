@@ -13,9 +13,9 @@ void ErrorMessage(int errorCode, std::string message)
 }
 
 //generate specific amount(iterations) of random numbers from 0 to maxValue
-int* CreateRandomNumbers(unsigned int iterations, unsigned int maxValue)
+unsigned int* CreateRandomNumbers(unsigned int iterations, unsigned int maxValue)
 {
-	int* numbers = new int[iterations];
+	unsigned int* numbers = new unsigned int[iterations];
 
 	for(int i=0; i<iterations; i++)
 	{
@@ -26,7 +26,7 @@ int* CreateRandomNumbers(unsigned int iterations, unsigned int maxValue)
 }
 
 //counts the distribution for numbers
-int* GetDistribution(int* numberArray, unsigned int maxValue)
+int* GetDistribution(unsigned int* numberArray, unsigned int maxValue)
 {
 	int* dist = new int[maxValue];
 
@@ -40,7 +40,7 @@ int* GetDistribution(int* numberArray, unsigned int maxValue)
 			if(d == numberArray[i])
 			{
 				//plus for the number
-				dist[d]++;
+				dist[d] += 1;
 			}
 		}
 	}

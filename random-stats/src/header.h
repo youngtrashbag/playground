@@ -30,7 +30,7 @@ extern "C"
 
 /* functions */
 void ErrorMessage(int errorCode, std::string message);
-int* CreateRandomNumbers(unsigned int iterations, unsigned int maxValue);
-int* GetDistribution(int* numberArray, unsigned int maxValue);
+unsigned int* CreateRandomNumbers(unsigned int iterations, unsigned int maxValue);
+int* GetDistribution(unsigned int* numberArray, unsigned int maxValue);
 void DisplayDistribution(int* distArray);
 

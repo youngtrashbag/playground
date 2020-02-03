@@ -24,8 +24,8 @@ int main(int argc, char* argv[])
 
 	//unsigned int iterations = 10;
 	//unsigned int maxValue = 10;
-	unsigned int iterations = 1;
-	unsigned int maxValue = 1;
+	unsigned int iterations = 15;
+	unsigned int maxValue = 15;
 
 	if(argc == 3)
 	{
@@ -52,7 +52,7 @@ int main(int argc, char* argv[])
 
 	}
 
-	int* randomArray = CreateRandomNumbers(iterations, maxValue);
+	unsigned int* randomArray = CreateRandomNumbers(iterations, maxValue);
 	int* distribution = GetDistribution(randomArray, maxValue);
 
 	for(int i=0; i< sizeof(randomArray); i++)
