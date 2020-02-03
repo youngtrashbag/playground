@@ -1,31 +1,29 @@
 #include "header.h"
 
-void Draw_random_lines(cv::Mat* image, char* window_name, cv::RNG rand)
+void draw_random_lines(cv::Mat image)
 {
-	int lineType = 8;
+	int a = 0;
+	int b = 901;
 	cv::Point pt1, pt2;
 
+	//random variable thingy
+	cv::RNG rand = (0xFFFFFFFF);
+	
 	//10 random lines will get drawn onto image
 	for(int i=0; i<10; i++)
 	{
-		pt1.x = rng.uniform(x_1, x_2);
-		pt1.y = rng.uniform(y_1, y_2);
-		pt2.x = rng.uniform(x_1, x_2);
-		pt2.y = rng.uniform(y_1, y_2);
+		pt1.x = rand.uniform(a, b);
+		pt1.y = rand.uniform(a, b);
+		pt2.x = rand.uniform(a, b);
+		pt2.y = rand.uniform(a, b);
 
-		line(image, pt1, pt2, cv::randomColor(rng), rng.uniform(1.10), 8);
+		cv::line(image, pt1, pt2, randomColor(rand), rand.uniform(1, 10), 8);
 	}
-
-
 }
 
-/*int draw_random_rectangles(cv::Mat image, char* window_name, cv::RNG rand)
+static cv::Scalar randomColor(cv::RNG& rng)
 {
+	int icolor = (unsigned) rng;
+	return cv::Scalar( icolor&255, (icolor>>8)&255, (icolor>>16)&255 );
 }
-
-int draw_random_ellipses(cv::Mat image, char* window_name, cv::RNG rand)
-{
-}
-*/
-
 

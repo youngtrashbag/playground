@@ -13,11 +13,8 @@ int main(int argc, char* argv[])
 	std::string fileName = "./image.png";
 	
 	//generate random lines and stuff
-
-	Draw_random_lines(image, &windowTitle, rand);
-
+	draw_random_lines(image);
 	//draw_random_rectangles(image, windowTitle, rand);
-
 	//draw_random_ellipses(image, windowTitle, rand);
 
 	cv::imshow(windowTitle, image);

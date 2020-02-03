@@ -6,6 +6,7 @@
 #include <opencv2/core.hpp>
 #include <opencv2/imgcodecs.hpp>
 #include <opencv2/highgui.hpp>
+#include <opencv2/imgproc.hpp>
 
 //defining different error codes
 #ifndef NO_ARG_ERR
@@ -25,7 +26,6 @@
 #endif //DRAW_RAND_ERR
 
 //functions
-void Draw_random_lines(cv::Mat image, char* window_name, cv::RNG rand);
-//int draw_random_rectangles(cv::Mat image, char* window_name, cv::RNG rand);
-//int draw_random_ellipses(cv::Mat image, char* window_name, cv::RNG rand);
+void draw_random_lines(cv::Mat image);
+static cv::Scalar randomColor(cv::RNG& rng);
 
