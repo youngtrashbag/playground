@@ -28,7 +28,8 @@ unsigned int* CreateRandomNumbers(unsigned int iterations, unsigned int maxValue
 //counts the distribution for numbers
 int* GetDistribution(unsigned int* numberArray, unsigned int maxValue)
 {
-	int* dist = new int[maxValue];
+	int* dist = new int[maxValue]();
+	//std::fill_n(dist, maxValue, 0);
 
 	//iterate trough number array
 	for(int i=0; i<sizeof(numberArray); i++)
@@ -40,7 +41,7 @@ int* GetDistribution(unsigned int* numberArray, unsigned int maxValue)
 			if(d == numberArray[i])
 			{
 				//plus for the number
-				dist[d] += 1;
+				dist[d]++;
 			}
 		}
 	}
@@ -48,6 +49,7 @@ int* GetDistribution(unsigned int* numberArray, unsigned int maxValue)
 	return dist;
 }
 
+//TODO: fix the bug (only displays number0 to number7)
 //display the distribution of the random numbers generated previously
 void DisplayDistribution(int* distArray)
 {
@@ -57,4 +59,16 @@ void DisplayDistribution(int* distArray)
 		std::cout << "Gen[" << distArray[i] << "]"<< std::endl;
 	}
 }
+/*
+//display the distribution of the random numbers generated previously
+//i know no other way than to pass the maxValue variable everytime
+void DisplayDistribution(int* distArray, unsigned int maxValue)
+{
+	for(int i=0; i<sizeof(distArray); i++)
+	{
+		std::cout << "Num[" << i << "]\t";
+		std::cout << "Gen[" << distArray[i] << "]"<< std::endl;
+	}
+}
+*/
 
