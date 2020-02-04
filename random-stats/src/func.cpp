@@ -59,10 +59,35 @@ void DisplayDistribution(int* distArray, unsigned int maxValue)
 	}
 }
 
-//displaying as the usual, but its sorted
-void DisplayDistributionSorted(int* distArray, unsigned int maxValue)
+//sorts the array from biggest to smallest element
+int* SortArray(int* array, unsigned int maxValue)
 {
-	int sortedArray[sizeof(distArray)/sizeof(distArray[0])];
+	//int* sortedArray = new int[sizeof(array)/sizeof(array[0])]();
+	int* sortedArray = new int[sizeof(array)]();
+
+	//if any indexes in sorted array have changed in value
+	bool hasChanged = false;
+	int prevValue = 0;
+
+	do
+	{
+		//going trough array with position as index
+		for(int pos = 0; pos<sizeof(array)/sizeof(array[0]); pos++)
+		{
+			if(prevValue >= array[pos])
+			{
+				sortedArray[pos] = prevValue;
+				sortedArray[pos+1] = array[pos];
+			}
+		}
+	} while(hasChanged);
+}
+
+//displaying as the usual, but its sorted
+/*void DisplayDistributionSorted(int* distArray, unsigned int maxValue)
+{
+	//int sortedArray[sizeof(distArray)/sizeof(distArray[0])];
+	int sortedArray = new int[];
 
 	//sorting
 	unsigned int nextNum = 0;
@@ -100,5 +125,5 @@ void DisplayDistributionSorted(int* distArray, unsigned int maxValue)
 		std::cout << "Num[" << i << "]\t";
 		std::cout << "Gen[" << sortedArray[i] << "]"<< std::endl;
 	}
-}
+}*/
 

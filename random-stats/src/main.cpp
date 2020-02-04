@@ -60,7 +60,8 @@ int main(int argc, char* argv[])
 	{
 		std::cout << randomArray[i] << std::endl;
 	}
-	//DisplayDistributionSorted(distribution, maxValue);
+
+	int* sortedDistribution = SortArray(distribution, maxValue);
 
 	return 0;
 }
