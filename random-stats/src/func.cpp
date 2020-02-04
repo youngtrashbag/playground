@@ -26,12 +26,12 @@ unsigned int* CreateRandomNumbers(unsigned int iterations, unsigned int maxValue
 }
 
 //counts the distribution for numbers
-int* GetDistribution(unsigned int* numberArray, unsigned int iterations, unsigned int maxValue)
+int* GetDistribution(unsigned int* numberArray, unsigned int maxValue)
 {
-	int* dist = new int[iterations]();
+	int* dist = new int[sizeof(numberArray)]();
 
 	//iterate trough number array
-	for(int i=0; i<iterations; i++)
+	for(int i=0; i<sizeof(numberArray)/sizeof(numberArray[0]); i++)
 	{
 		for(int d=0; d<maxValue+1; d++)
 		{
@@ -62,7 +62,7 @@ void DisplayDistribution(int* distArray, unsigned int maxValue)
 //displaying as the usual, but its sorted
 void DisplayDistributionSorted(int* distArray, unsigned int maxValue)
 {
-	int sortedArray[sizeof(distArray)];
+	int sortedArray[sizeof(distArray)/sizeof(distArray[0])];
 
 	//sorting
 	unsigned int nextNum = 0;
