@@ -7,6 +7,7 @@ Date 03.02.2020
 #include <iostream>
 #include <string>
 #include <cstdlib>
+
 extern "C"
 {
 	#include <sodium.h>
@@ -35,7 +36,10 @@ extern "C"
 
 /* functions */
 void ErrorMessage(int errorCode, std::string message);
+
 unsigned int* CreateRandomNumbers(unsigned int iterations, unsigned int maxValue);
-int* GetDistribution(unsigned int* numberArray, unsigned int maxValue);
-void DisplayDistribution(int* distArray);
+
+int* GetDistribution(unsigned int* numberArray, unsigned int iterations, unsigned int maxValue);
+
+void DisplayDistribution(int* distArray, unsigned int maxValue);
 

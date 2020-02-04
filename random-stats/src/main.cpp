@@ -5,10 +5,6 @@ Purpose: Create a "Statistic" about how random libsodium's random generator actu
 */
 
 #include "header.h"
-extern "C"
-{
-	#include <sodium.h>
-}
 
 int main(int argc, char* argv[])
 {
@@ -18,14 +14,8 @@ int main(int argc, char* argv[])
 		ErrorMessage(ERR_NO_SOD, "Sodium Library not found");
 	}
 
-	//random number between 0 and 1
-	//int random_number = randombytes_uniform(2);
-	//std::cout << "Random number: " << random_number << std::endl;
-
-	//unsigned int iterations = 10;
-	//unsigned int maxValue = 10;
-	unsigned int iterations = 15;
-	unsigned int maxValue = 15;
+	unsigned int iterations = 10;
+	unsigned int maxValue = 10;
 
 	//validating arguments passed to program on execution
 	if(argc == 3)
@@ -60,15 +50,10 @@ int main(int argc, char* argv[])
 
 	}
 
+	//actually whole process of generating, processing, and displaying random numbers
 	unsigned int* randomArray = CreateRandomNumbers(iterations, maxValue);
-	int* distribution = GetDistribution(randomArray, maxValue);
-
-	for(int i=0; i< sizeof(randomArray); i++)
-	{
-		std::cout << randomArray[i] << std::endl;
-	}
-
-	DisplayDistribution(distribution);
+	int* distribution = GetDistribution(randomArray, iterations, maxValue);
+	DisplayDistribution(distribution, maxValue);
 
 	return 0;
 }
