@@ -43,3 +43,5 @@ int* GetDistribution(unsigned int* numberArray, unsigned int iterations, unsigne
 
 void DisplayDistribution(int* distArray, unsigned int maxValue);
 
+void DisplayDistributionSorted(int* distArray, unsigned int maxValue);
+

@@ -59,3 +59,46 @@ void DisplayDistribution(int* distArray, unsigned int maxValue)
 	}
 }
 
+//displaying as the usual, but its sorted
+void DisplayDistributionSorted(int* distArray, unsigned int maxValue)
+{
+	int sortedArray[sizeof(distArray)];
+
+	//sorting
+	unsigned int nextNum = 0;
+	unsigned int temp;
+	//if a value has changed, the whole sorting process
+	//should be repeated
+	bool changed = false;
+	do
+	{
+		for(int i=0; i<maxValue+1; i++)
+		{
+			temp = distArray[i];
+
+			if(nextNum >= temp)
+			{
+				//shift the current temp value backward one pos
+				nextNum = distArray[i+1];
+				sortedArray[i+1] = temp;
+				changed = true;
+			}
+			else if(nextNum < temp)
+			{
+				//i dont know tbh
+			}
+			else
+			{
+				changed = false;
+			}
+		}
+	} while(changed);
+	
+	//displaying
+	for(int i=0; i<maxValue+1; i++)
+	{
+		std::cout << "Num[" << i << "]\t";
+		std::cout << "Gen[" << sortedArray[i] << "]"<< std::endl;
+	}
+}
+

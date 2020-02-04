@@ -53,7 +53,14 @@ int main(int argc, char* argv[])
 	//actually whole process of generating, processing, and displaying random numbers
 	unsigned int* randomArray = CreateRandomNumbers(iterations, maxValue);
 	int* distribution = GetDistribution(randomArray, iterations, maxValue);
-	DisplayDistribution(distribution, maxValue);
+	//DisplayDistribution(distribution, maxValue);
+
+	//testing my sorting algorithm
+	for(int i=0;i<sizeof(randomArray);i++)
+	{
+		std::cout << randomArray[i] << std::endl;
+	}
+	DisplayDistributionSorted(distribution, maxValue);
 
 	return 0;
 }
