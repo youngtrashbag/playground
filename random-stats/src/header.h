@@ -23,10 +23,15 @@ extern "C"
 #define ERR_PARAM_TOO_SMALL 3
 #endif //ERR_PARAM_TOO_SMALL
 
-//parameter too small
+//parameter too big
 #ifndef ERR_PARAM_TOO_BIG
 #define ERR_PARAM_TOO_BIG 4
 #endif //ERR_PARAM_TOO_BIG
+
+//parameter isnt a number
+#ifndef ERR_PARAM_NO_NUM
+#define ERR_PARAM_NO_NUM 5
+#endif //ERR_PARAM_NO_NUM
 
 /* functions */
 void ErrorMessage(int errorCode, std::string message);

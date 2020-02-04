@@ -27,10 +27,18 @@ int main(int argc, char* argv[])
 	unsigned int iterations = 15;
 	unsigned int maxValue = 15;
 
+	//validating arguments passed to program on execution
 	if(argc == 3)
 	{
-		iterations = atoi(argv[1]);
-		maxValue = atoi(argv[2]);
+		try
+		{
+			iterations = atoi(argv[1]);
+			maxValue = atoi(argv[2]);
+		}
+		catch (...)
+		{
+			ErrorMessage(ERR_PARAM_NO_NUM, "The Arguments you passed aren't numbers");
+		}
 
 		if(iterations < 1)
 		{
