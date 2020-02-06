@@ -5,13 +5,15 @@
  */
 #include "header.h"
 
+using namespace std;
+
 int main(int argc, char* argv[])
 {
 	//open/create file
 	ofstream file;
 	file.open(FILENAME, ios_base::out);
 
-	unsigned long int iterations = 10000;
+	unsigned long int iterations = ITERATIONS;
 
 	if(argc == 2)
 	{
@@ -24,9 +26,10 @@ int main(int argc, char* argv[])
 		{
 			iterations = atoi(argv[1]);
 		}
-		iterations = atoi(argv[1]);
 	}
 	
+	cout << "Time Start: " << endl;
+
 	//append/write to file
 	for(int i = 0; i < iterations; i++)
 	{
@@ -35,6 +38,8 @@ int main(int argc, char* argv[])
 	}
 
 	file.close();
+
+	cout << "Time End: " << endl;
 
 	return 0;
 }

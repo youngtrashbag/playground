@@ -4,12 +4,12 @@
  * Date:   06.02.2020
  */
 
-using namespace std;
-
 /* includes */
 #include <fstream>
 #include <cstdlib>
 #include <iostream>
+#include <ctime>
+#include <string>
 extern "C"
 {
 	#include <sodium.h>
@@ -23,4 +23,7 @@ extern "C"
 #ifndef ITERATIONS
 #define ITERATIONS 10000
 #endif //ITERATIONS
+
+/* functions */
+std::string formattedTime();
 
