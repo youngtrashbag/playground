@@ -20,8 +20,7 @@ int main()
 	//fiel does not exist, or does not have any contents
 	if(listfile == NULL)
 	{
-		printf("File doesn't exist, exiting now.\n");
-		fclose(listfile);
+		printf("Error opening file, exiting now.\n");
 
 		exit(1);
 	}

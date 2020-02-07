@@ -26,7 +26,7 @@ int main(int argc, char* argv[])
 		if(listfile == NULL)
 		{
 			//file does not exist, 
-			printf("File doesn't exist, exiting now.\n");
+			printf("Error opening file, exiting now.\n");
 		}
 
 		exit(1);
@@ -36,6 +36,7 @@ int main(int argc, char* argv[])
 	{
 		//file does not exist, 
 		printf("File is empty, exiting now.\n");
+		fclose(listfile);
 
 		exit(1);
 	}
