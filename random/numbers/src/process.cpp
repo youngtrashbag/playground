@@ -14,14 +14,21 @@ int main(int argc, char* argv[])
 	file.open(FILENAME, ios_base::in);
 
 	unsigned long long int number;
-	char num;
+	string lineStr;
 
-	while(file >> num)
+	//read whole line please instead of only one char !!
+	while(file >> lineStr)
 	{
-		number += atoi(&num);
+		//number += atoi(&num);
+		number += validNumber(lineStr);
 	}
 
 	file.close();
+
+	//create variable timeStart at start
+	//cout formatTime(timeStart)
+	//after finishing create timeEnd variable
+	//cout formatTime(timeEnd)
 
 	cout << "Time Start: " << formattedTime() << endl;
 	cout << "calculated number is: " << number << endl;

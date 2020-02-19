@@ -33,8 +33,16 @@ int main(int argc, char* argv[])
 	//append/write to file
 	for(int i = 0; i < iterations; i++)
 	{
-		//generate random number from 0 to 9
-		file << randombytes_uniform(10) << endl;
+		if(i % 2 != 0)
+		{
+			// put - and generate random number from 0 to 9
+			file << "-" << randombytes_uniform(10) << endl;
+		}
+		else
+		{
+			//generate random number from 0 to 9
+			file << randombytes_uniform(10) << endl;
+		}
 	}
 
 	file.close();

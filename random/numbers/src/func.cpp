@@ -19,3 +19,15 @@ string formattedTime()
 
 }
 
+int validNumber(string line)
+{
+	//process number with regex "(-)?[0-9](,)?"
+
+	//number += atoi(&num);
+
+	//check if string has preceeding "-"
+	//check if string has number (maybe use atoi)
+	//ignore comma for now
+	return 1;
+}
+
