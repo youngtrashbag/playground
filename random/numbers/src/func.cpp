@@ -16,6 +16,7 @@ string formattedTime()
 	tm tm = *localtime(&t);
 	
 	return string(put_time(&tm, "%Y/%m/%d - %H:%M:%S"));*/
+	return "time yes";
 
 }
 
@@ -28,6 +29,7 @@ int validNumber(string line)
 	//check if string has preceeding "-"
 	//check if string has number (maybe use atoi)
 	//ignore comma for now
+
 	return 1;
 }
 

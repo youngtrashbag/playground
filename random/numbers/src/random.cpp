@@ -9,26 +9,31 @@ using namespace std;
 
 int main(int argc, char* argv[])
 {
-	//open/create file
-	ofstream file;
-	file.open(FILENAME, ios_base::out);
 
 	unsigned long int iterations = ITERATIONS;
+	string filename = FILENAME;
 
-	if(argc == 2)
+	if(argc == 3)
 	{
-		if(atoi(argv[1]) <= 0)
+		int paramIterations = atoi(argv[1]);
+		string paramFilename = argv[2];
+
+		if(paramIterations <= 0)
 		{
-			cout << "Number too low, using iteration default: ";
-			cout << iterations << endl;
+			cout << "Error reading Parameters, using default values: ";
+			cout << iterations << " ";
+			cout << filename << endl;
 		}
 		else
 		{
-			iterations = atoi(argv[1]);
+			iterations = paramIterations;
+			filename = paramFilename;
 		}
 	}
-	
-	cout << "Time Start: " << endl;
+
+	//open/create file
+	ofstream file;
+	file.open(filename, ios_base::out);
 
 	//append/write to file
 	for(int i = 0; i < iterations; i++)
@@ -47,7 +52,8 @@ int main(int argc, char* argv[])
 
 	file.close();
 
-	cout << "Time End: " << endl;
+	cout << "Time Start: " << formattedTime() << endl;
+	cout << "Time End: " << formattedTime() << endl;
 
 	return 0;
 }
