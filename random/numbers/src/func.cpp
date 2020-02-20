@@ -16,7 +16,13 @@ std::string formattedTime(time_t time)
 	tm tm = *localtime(&t);
 	
 	return string(put_time(&tm, "%Y/%m/%d - %H:%M:%S"));*/
-	return "time yes";
+	string strTime;
+	timeInfo = localtime(&time);
+
+	//timeinfo dont work i dont know why why please help
+	strftime(strTime, sizeof(strTime), "%Y/%m/%d - %H:%M:%S", timeInfo);
+
+	return strTime;
 
 }
 
