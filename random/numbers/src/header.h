@@ -26,4 +26,5 @@ extern "C"
 
 /* functions */
 std::string formattedTime();
+int validNumber(std::string line);
 
