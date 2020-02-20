@@ -35,6 +35,7 @@ int main(int argc, char* argv[])
 	ofstream file;
 	file.open(filename, ios_base::out);
 
+	time_t startTime = time(0);
 	//append/write to file
 	for(int i = 0; i < iterations; i++)
 	{
@@ -52,8 +53,10 @@ int main(int argc, char* argv[])
 
 	file.close();
 
-	cout << "Time Start: " << formattedTime() << endl;
-	cout << "Time End: " << formattedTime() << endl;
+	time_t endTime = time(0);
+
+	cout << "Time Start: " << formattedTime(startTime) << endl;
+	cout << "Time End: " << formattedTime(endTime) << endl;
 
 	return 0;
 }

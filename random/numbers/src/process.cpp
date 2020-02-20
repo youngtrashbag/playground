@@ -42,23 +42,21 @@ int main(int argc, char* argv[])
 
 	//read whole line please instead of only one char !!
 	//while(file >> lineStr)
+	time_t startTime = time(0);
+
 	while(getline(file, lineStr))
 	{
-		//number += atoi(&num);
 		number += validNumber(lineStr);
 	}
 
 	file.close();
 
-	//create variable timeStart at start
-	//cout formatTime(timeStart)
-	//after finishing create timeEnd variable
-	//cout formatTime(timeEnd)
+	time_t endTime = time(0);
 
 	cout << "calculated number is: " << number << endl;
 
-	cout << "Time Start: " << formattedTime() << endl;
-	cout << "Time End: " << formattedTime() << endl;
+	cout << "Time Start: " << formattedTime(startTime) << endl;
+	cout << "Time End: " << formattedTime(endTime) << endl;
 
 	return 0;
 }

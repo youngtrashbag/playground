@@ -25,6 +25,6 @@ extern "C"
 #endif //ITERATIONS
 
 /* functions */
-std::string formattedTime();
-int validNumber(std::string line);
+std::string formattedTime(time_t time);
+int validNumber(std::string &line);
 

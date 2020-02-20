@@ -7,7 +7,7 @@
 
 using namespace std;
 
-string formattedTime()
+std::string formattedTime(time_t time)
 {
 	//this func should return date formatted as:
 	//YYYY/MM/DD - HH:MM:SS
@@ -20,16 +20,22 @@ string formattedTime()
 
 }
 
-int validNumber(string line)
+int validNumber(string &line)
 {
+	//ignore regex for now
 	//process number with regex "(-)?[0-9](,)?"
 
-	//number += atoi(&num);
+	int number = 0;
+	try
+	{
+		number = stoi(line);
+	}
+	catch(...)
+	{
+		//a non numeric value could not be converted with stoi
+		return number;
+	}
 
-	//check if string has preceeding "-"
-	//check if string has number (maybe use atoi)
-	//ignore comma for now
-
-	return 1;
+	return number;
 }
 
