@@ -51,8 +51,11 @@ int main(int argc, char* argv[])
 	}
 
 	//actually whole process of generating, processing, and displaying random numbers
+	//create random Array
 	unsigned int* randomArray = CreateRandomNumbers(iterations, maxValue);
+	//calculate distribution
 	int* distribution = GetDistribution(randomArray, maxValue);
+	//display the distribution
 	DisplayDistribution(distribution, maxValue);
 
 	return 0;

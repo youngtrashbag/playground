@@ -33,7 +33,7 @@ int* GetDistribution(unsigned int* numberArray, unsigned int maxValue)
 	//iterate trough number array
 	for(int i=0; i<sizeof(numberArray)/sizeof(numberArray[0]); i++)
 	{
-		for(int d=0; d<maxValue+1; d++)
+		for(int d=0; d<maxValue; d++)
 		{
 			//look, if the number "d" in maxValue matches
 			//the randomly generated number

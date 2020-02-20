@@ -3,6 +3,9 @@ Author: youngtrashbag
 Date 03.02.2020
 */
 
+#ifndef _RANDOM_STATS_H_
+#define _RANDOM_STATS_H_
+
 /* includes */
 #include <iostream>
 #include <string>
@@ -42,4 +45,6 @@ unsigned int* CreateRandomNumbers(unsigned int iterations, unsigned int maxValue
 int* GetDistribution(unsigned int* numberArray, unsigned int maxValue);
 
 void DisplayDistribution(int* distArray, unsigned int maxValue);
+
+#endif //_RANDOM_STATS_H_
 

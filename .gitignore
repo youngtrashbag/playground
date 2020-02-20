@@ -130,3 +130,9 @@ src/bin
 bin/
 *.so
 libsodium*
+
+# rust files
+*/target/
+Cargo.lock
+**/*.rs.bk
+
