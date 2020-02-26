@@ -27,5 +27,4 @@
 
 //functions
 void draw_random_lines(cv::Mat image);
-static cv::Scalar randomColor(cv::RNG& rng);
 
