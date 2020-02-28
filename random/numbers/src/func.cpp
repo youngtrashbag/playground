@@ -12,15 +12,18 @@ std::string formattedTime(time_t time)
 	//this func should return date formatted as:
 	//YYYY/MM/DD - HH:MM:SS
 
-	/*time_t t = time(0);
+	std::string strTime = "yo the time here please";
+	/*
+	time_t t = time(0);
 	tm tm = *localtime(&t);
 	
-	return string(put_time(&tm, "%Y/%m/%d - %H:%M:%S"));*/
+	return string(put_time(&tm, "%Y/%m/%d - %H:%M:%S"));
 	string strTime;
 	timeInfo = localtime(&time);
 
 	//timeinfo dont work i dont know why why please help
 	strftime(strTime, sizeof(strTime), "%Y/%m/%d - %H:%M:%S", timeInfo);
+	*/
 
 	return strTime;
 

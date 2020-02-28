@@ -21,7 +21,7 @@ extern "C"
 #endif //FILENAME
 
 #ifndef ITERATIONS
-#define ITERATIONS 10000
+#define ITERATIONS 10000 //10k
 #endif //ITERATIONS
 
 /* functions */

@@ -10,23 +10,35 @@ using namespace std;
 int main(int argc, char* argv[])
 {
 
-	unsigned long int iterations = ITERATIONS;
+	unsigned long long iterations = ITERATIONS;
 	string filename = FILENAME;
 
-	if(argc == 3)
+	if(argc <= 1 && argc > 3)
 	{
-		int paramIterations = atoi(argv[1]);
-		string paramFilename = argv[2];
+		unsigned long long paramIterations = atoi(argv[1]);
 
+		// iterations valid
 		if(paramIterations <= 0)
 		{
-			cout << "Error reading Parameters, using default values: ";
-			cout << iterations << " ";
-			cout << filename << endl;
+			cout << "Error reading Iterations, using default value: ";
+			cout << iterations << endl;
 		}
 		else
 		{
 			iterations = paramIterations;
+		}
+
+		string paramFilename = argv[2];
+
+		// filename valid
+		// "a.txt" min length
+		if(paramFilename.length() < 5 || paramFilename.length() > 20)
+		{
+			cout << "Error reading Filename, using default value: ";
+			cout << filename << endl;
+		}
+		else
+		{
 			filename = paramFilename;
 		}
 	}
@@ -37,7 +49,7 @@ int main(int argc, char* argv[])
 
 	time_t startTime = time(0);
 	//append/write to file
-	for(int i = 0; i < iterations; i++)
+	for(unsigned long long i = 0; i < iterations; i++)
 	{
 		if(i % 2 != 0)
 		{

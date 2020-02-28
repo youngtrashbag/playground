@@ -37,7 +37,7 @@ int main(int argc, char* argv[])
 	ifstream file;
 	file.open(filename, ios_base::in);
 
-	long long int number = 0;
+	unsigned long long number = 0;
 	string lineStr;
 
 	//read whole line please instead of only one char !!
