@@ -18,8 +18,8 @@ pub fn print_test() {
     
 }
 
-pub fn space(newlines: i32) {
-    for _ in 0..newlines {
+pub fn space(newline_count: i32) {
+    for _ in 0..newline_count {
         print!("\n");
     }
 }

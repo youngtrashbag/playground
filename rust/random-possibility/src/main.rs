@@ -18,8 +18,9 @@ fn main() {
     for rd in random_data.iter() {
         i += 1;
 
-        println!("Matching Number: {0} on iteration {1}", rd.number, rd.iteration);
-        println!("1 in {0} or a {1} in 1 chance", rd.range, (1.0 / rd.range as f64));
+        //println!("Matching Number: {0} on iteration {1}", rd.number, rd.iteration);
+        //println!("1 in {0} or a {1} in 1 chance", rd.range, (1.0 / rd.range as f64));
+        println!("num:{0}\titer:{1}", rd.number, rd.iteration);
         tests::space(1);
     }
 
