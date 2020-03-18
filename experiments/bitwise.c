@@ -16,7 +16,7 @@ int main(int argc, char* argv[])
 	}
 	else
 	{
-		printf("Number is not odd.\n");
+		printf("Number is even.\n");
 	}
 
 	return 0;
