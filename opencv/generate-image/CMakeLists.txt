@@ -15,4 +15,3 @@ add_executable(${PROJECT_NAME} ${SOURCE_FILES})
 
 # Link Libraries with executable
 target_link_libraries(${PROJECT_NAME}  ${OpenCV_LIBS})
-
