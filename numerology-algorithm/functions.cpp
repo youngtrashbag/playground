@@ -8,21 +8,31 @@
 
 unsigned char DigitSum(Date* pDate)
 {
-    unsigned char digitSum = 0;
-    unsigned long tempNum = 0;
+	unsigned char digitSum = 0;
+	unsigned long tempNum = 0;
 
-    tempNum = pDate->GetDay();
-    //shift a byte, becuase of char
-    tempNum = tempNum << 8;
-    tempNum += pDate->GetMonth();
-    tempNum = tempNum << 8;
-    tempNum += pDate->GetYear();
+	tempNum = pDate->GetDay();
+	if(pDate->GetDay() > 9)
+		tempNum *= 100;
+	else
+		tempNum *= 10;
 
+	tempNum += pDate->GetMonth();
+	tempNum *= 10000;
+	tempNum += pDate->GetYear();
 
-    do{
-        digitSum += tempNum % 10;
-        tempNum /= 10;
-    } while (tempNum > 9);
+	do
+	{
+		if(digitSum > 9)
+		{
+			tempNum = digitSum;
+			digitSum = 0;
+		}
 
-    return digitSum;
+		digitSum += tempNum % 10;
+		tempNum /= 10;
+	} while (tempNum > 0 && digitSum > 9);
+
+	return digitSum;
 }
+

@@ -12,21 +12,22 @@ using namespace std;
 
 int main(int argc, char* argv[])
 {
-    unsigned int yearStart = 2020, yearEnd = 2020;
+	unsigned int yearStart = 2020, yearEnd = 2020;
 
-    if(argc == 3)
-    {
-        yearStart = atoi(argv[2]);
-        yearEnd = atoi(argv[3]);
-    }
+	if(argc == 3)
+	{
+		yearStart = atoi(argv[2]);
+		yearEnd = atoi(argv[3]);
+	}
 
-    Date dateStart = Date(1, 1, yearStart);
-    Date dateEnd = Date(31, 12, yearEnd);
+	Date dateStart = Date(1, 1, yearStart);
+	Date dateEnd = Date(31, 12, yearEnd);
 
-    // digit sum should be 4
-    Date myDate = Date(1,1,2000);
-    unsigned char myDigitSum = DigitSum(&myDate);
-    cout << myDigitSum;
+	// digit sum should be 4
+	Date myDate = Date(31,31,9999);
+	unsigned char myDigitSum = DigitSum(&myDate);
+	cout << int(myDigitSum) << endl;
 
-    return 0;
+	return 0;
 }
+

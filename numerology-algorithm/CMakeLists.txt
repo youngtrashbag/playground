@@ -14,4 +14,5 @@ set(
     date.cpp
 )
 
-add_executable(${PROJECT_NAME}, ${SOURCE_FILES})
+add_executable(numerology ${SOURCE_FILES})
+
