@@ -8,9 +8,10 @@ set(CMAKE_CXX_COMPILER clang++)
 
 set(
     SOURCE_FILES
-    src/main.cpp
-    src/header.h
-    src/functions.cpp
+    main.cpp
+    header.h
+    functions.cpp
+    date.cpp
 )
 
 add_executable(${PROJECT_NAME}, ${SOURCE_FILES})

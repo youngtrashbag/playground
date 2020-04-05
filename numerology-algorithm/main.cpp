@@ -14,7 +14,7 @@ int main(int argc, char* argv[])
 {
     unsigned int yearStart = 2020, yearEnd = 2020;
 
-    if(argc = 3)
+    if(argc == 3)
     {
         yearStart = atoi(argv[2]);
         yearEnd = atoi(argv[3]);
