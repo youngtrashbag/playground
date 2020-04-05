@@ -4,11 +4,14 @@
  */
 #pragma once
 
+#include <iostream>
+#include <cstdlib>
+
 class Date {
 
     public:
 
-    Date();
+    Date(unsigned char pDay, unsigned char pMonth, unsigned int pYear);
 
     unsigned char GetDay();
     unsigned char GetMonth();
@@ -18,9 +21,16 @@ class Date {
     void SetMonth(unsigned char pMonth);
     void SetYear(unsigned int pYear);
 
+    static bool Compare(Date pD1, Date pD2);
+
     private:
 
-    unsigned char day;
-    unsigned char month;
-    unsigned int year;
+    unsigned char _day;
+    unsigned char _month;
+    unsigned int _year;
 };
+
+//make csv func or whateva
+//make digit sum func
+
+unsigned char DigitSum(Date* pDate);
