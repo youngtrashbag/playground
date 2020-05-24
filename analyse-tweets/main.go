@@ -1,7 +1,9 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
+	"io/ioutil"
 	"os"
 )
 
@@ -15,19 +17,29 @@ import (
 */
 
 func main() {
-	var weekdays = []string{"Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"}
-	var months = []string{"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"}
+	//var weekdays = []string{"Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"}
+	//var months = []string{"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"}
 
-	var filename string = "tweets.js"
+	var filename string = "tweets.json"
 
-	jsonfile, err := os.Open(filename)
+	jsonFile, err := os.Open(filename)
 
 	if err != nil {
 		fmt.Println(err)
 	}
 
-	defer jsonfile.Close()
-
 	fmt.Println("Successfully Opened " + filename + " !")
+	defer jsonFile.Close()
+
+	byteValue, _ := ioutil.ReadAll(jsonFile)
+	var tweets map[string]interface{}
+	json.Unmarshal([]byte(byteValue), &tweets)
+
+	str := fmt.Sprintf("%v", tweets["tweet"])
+	fmt.Println(str)
+	//for index, elements := range tweets {
+	//	fmt.Println(index)
+	//	fmt.Sprintf("%v", elements)
+	//}
 
 }
