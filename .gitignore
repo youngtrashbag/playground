@@ -141,5 +141,4 @@ libsodium*
 libsodium*/
 # bin folders
 bin/
-analyse-tweets/tweet*
-
+analyse-tweets/tweets.js
