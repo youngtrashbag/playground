@@ -35,11 +35,5 @@ func main() {
 	var tweets map[string]interface{}
 	json.Unmarshal([]byte(byteValue), &tweets)
 
-	str := fmt.Sprintf("%v", tweets["tweet"])
-	fmt.Println(str)
-	//for index, elements := range tweets {
-	//	fmt.Println(index)
-	//	fmt.Sprintf("%v", elements)
-	//}
-
+	fmt.Println(tweets)
 }
