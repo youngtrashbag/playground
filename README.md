@@ -1,11 +1,8 @@
 # Playground
 
-`Projects // Code` `too small // not good enough` for having an own Repository.
+Small *projects* that I use for testing things quickly as a POC type thing.
 
 ## List of Contents
 
-- Well-Rested
-	- golang rest api server
-- Random Picker
-	- a program, that picks a randomly generated entry in a list file
+Just look in the folders. I'm not going to list these things here.
 
