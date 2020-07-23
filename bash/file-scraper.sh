@@ -1,15 +1,15 @@
 #!/bin/bash
 
-### Author: youngtrashbag
+### Author:	youngtrashbag
 ### Date:	23.07.2020
-### Description: this is intened to scrape images.
+### desc.:	this is intened to scrape images.
 ###					I've wanted to make an extension with this idea for the longest time,
 ###					but never got to it. so here you go. Have fun !
 ### NOTE: this only works if the files are numbered in order.
 
 
 $FROM		# range start
-$TO			# range end
+$TO		# range end
 
 $ADDRESS	# the website, where the files are stored
 $EXTENSION	# the file extension (without the dot)
