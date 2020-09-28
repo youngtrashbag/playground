@@ -1,3 +1,4 @@
+#[derive(Copy, Clone)]
 pub struct Cashier {
     pub id: u8,
     pub balance: u64

@@ -1,3 +1,4 @@
+#[derive(Copy, Clone)]
 pub struct Product {
     pub name: &'static str,
     pub price: u32,

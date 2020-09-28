@@ -1,5 +1,6 @@
 use crate::{cashier::Cashier, product::Product};
 
+#[derive(Copy, Clone)]
 pub struct Store {
     pub name: &'static str,
     pub cashiers: [Cashier; 8],
