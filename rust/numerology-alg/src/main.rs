@@ -4,7 +4,7 @@ use chrono::{NaiveDate, Duration, Datelike};
 
 fn main() {
     // set start date
-    let start: NaiveDate = NaiveDate::from_ymd(2000, 1, 1);
+    let mut start: NaiveDate = NaiveDate::from_ymd(2000, 1, 1);
     // set end date
     let end: NaiveDate = NaiveDate::from_ymd(2000, 1, 1);
 
@@ -12,77 +12,65 @@ fn main() {
     // note that index 0 stores the count for number 1 -> index 8 stores count for nr 9
     let numbers: [u64; 8] = [0; 8];
 
-    calc_numerology_number(start);
-
     while date_is_less(start, end) {
-        let start = start + Duration::days(1);
+        println!("start: {:?}\nend: {:?}", start, end);
+        start = start + Duration::days(1);
     }
 }
 
+/// true, if date 1 is less(or earlier) than date 2
 fn date_is_less(d1: NaiveDate, d2: NaiveDate) -> bool {
+    if d1.year() <= d2.year() {
+        if d1.month() <= d2.month() && d1.year() <= d2.year() {
+            if d1.day() <= d2.day() && (d1.month() <= d2.month() && d1.year() <= d2.year()) {
+                return true;
+            }
+        }
+    }
+
     false
 }
 
-fn calc_numerology_number(d: NaiveDate) -> u8 {
-    let mut yr = d.year();
-    let mut mt = d.month();
-    let mut dy = d.day();
+fn calc_numberology_number(d: NaiveDate) -> u8 {
+    let mut sum: u32 = 0;
+    sum += d.year() as u32;
+    sum *= 100;
+    sum += d.month() as u32;
+    sum *= 100;
+    sum += d.day() as u32;
+    println!("sum {}", sum);
 
-    let mut number: u8 = 0;
+    while sum > 9 {
+        sum = calc_digit_sum(&sum).into();
+    }
 
-    // concatenate numbers to string
-    let concat_str: String = yr.to_string() + &mt.to_string() + &dy.to_string();
-    let vec_nums: Vec<&str> = concat_str.split("").collect::<Vec<&str>>();
-    //let vec_nums: Vec<u8> = vec_nums.parse::<u8>().collect().unwrap();
-    //.parse::<u8>().unwrap();
+    sum as u8
+}
+
+fn calc_digit_sum(number: &u32) -> u8 {
+    let mut number: u32 = *number;
+    let mut sum: u8 = 0;
+
+    while number > 0 {
+        sum += (number % 10) as u8;
+        number /= 10;
+    }
     
-    /*
-    for _ in 0..2 {
-        number += dy as u8 % 10;
-        dy /= 10;
-    }
-    println!("{}", number);
-
-    for _ in 0..2 {
-        number += mt as u8 % 10;
-        mt /= 10;
-    }
-    println!("{}", number);
-
-    for _ in 0..4 {
-        number += yr as u8 % 10;
-        yr /= 10;
-    }
-    println!("{}", number);
-    */
-
-    // TODO: right now, I am too stupid to come up with a good algorithm,
-    // and this below is not safe for bigger numbers
-    // so please, when I have more brainpower, re-implement this
-
-    let mut bufnum = number;
-    number = 0;
-
-    while bufnum > 9 {
-        number += bufnum % 10;
-        bufnum /= 10;
-    }
-
-    number
+    sum 
 }
 
 #[cfg(test)]
 mod tests {
-    use chrono::{NaiveDate, Duration, Datelike};
+    use chrono::{NaiveDate, Datelike};
     #[test]
     fn calc_numerology_number_works_1() {
         let date: NaiveDate = NaiveDate::from_ymd(2000, 1, 1);
-        assert_eq!(super::calc_numerology_number(date), 4);
+        assert_eq!(super::calc_numberology_number(date), 4);
     }
 
     #[test]
     fn calc_numerology_number_works_2() {
         let date: NaiveDate = NaiveDate::from_ymd(2002, 12, 14);
-        assert_eq!(super::calc_numerology_number(date), 3);
+        assert_eq!(super::calc_numberology_number(date), 3);
     }
 }
