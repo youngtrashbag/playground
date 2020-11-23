@@ -6,18 +6,42 @@ fn main() {
     // set start date
     let mut start: NaiveDate = NaiveDate::from_ymd(2000, 1, 1);
     // set end date
-    let end: NaiveDate = NaiveDate::from_ymd(2000, 1, 1);
+    let end: NaiveDate = NaiveDate::from_ymd(2000, 1, 15);
 
     // array for counting the numerology numbers
     // note that index 0 stores the count for number 1 -> index 8 stores count for nr 9
-    let numbers: [u64; 8] = [0; 8];
+    let mut numbers: [u64; 9] = [0; 9];
 
     while date_is_less(start, end) {
         println!("start: {:?}\nend: {:?}", start, end);
-        start = start + Duration::days(1);
+        start += Duration::days(1);
+        
+        let index: usize = calc_numberology_number(start) as usize;
+        numbers[index-1] += 1;
     }
+
+    println!("{:#?}", numbers);
 }
 
+fn date_is_less(d1: NaiveDate, d2: NaiveDate) -> bool {
+    let year: bool = d1.year() <= d2.year();
+    let month: bool = d1.month() <= d2.month();
+    let day: bool = d1.day() <= d2.day();
+
+    if year {
+        if month  {
+            if day {
+                true;
+            } else if month && year {
+                false;
+            }
+        }
+    }
+
+    false
+}
+
+/*
 /// true, if date 1 is less(or earlier) than date 2
 fn date_is_less(d1: NaiveDate, d2: NaiveDate) -> bool {
     if d1.year() <= d2.year() {
@@ -27,9 +51,9 @@ fn date_is_less(d1: NaiveDate, d2: NaiveDate) -> bool {
             }
         }
     }
-
     false
 }
+*/
 
 fn calc_numberology_number(d: NaiveDate) -> u8 {
     let mut sum: u32 = 0;
@@ -38,7 +62,6 @@ fn calc_numberology_number(d: NaiveDate) -> u8 {
     sum += d.month() as u32;
     sum *= 100;
     sum += d.day() as u32;
-    println!("sum {}", sum);
 
     while sum > 9 {
         sum = calc_digit_sum(&sum).into();
@@ -71,7 +94,7 @@ mod tests {
     #[test]
     fn calc_numerology_number_works_2() {
         let date: NaiveDate = NaiveDate::from_ymd(2020, 7, 4);
-        assert_eq!(super::calc_numberology_number(date), 7);
+        assert_eq!(super::calc_numberology_number(date), 6);
     }
 
     #[test]
@@ -151,6 +174,24 @@ mod tests {
     fn compare_date_5_1() {
         let d1: NaiveDate = NaiveDate::from_ymd(2000, 1, 1);
         let d2: NaiveDate = NaiveDate::from_ymd(2002, 1, 1);
+        assert_eq!(super::date_is_less(d1, d2), true);
+    }
+
+    #[test]
+    /// complex compare
+    /// month and day 1 more
+    fn compare_date_6() {
+        let d1: NaiveDate = NaiveDate::from_ymd(2000, 2, 2);
+        let d2: NaiveDate = NaiveDate::from_ymd(2001, 1, 1);
+        assert_eq!(super::date_is_less(d1, d2), true);
+    }
+
+    #[test]
+    /// complex compare2
+    /// day 1 more
+    fn compare_date_6_1() {
+        let d1: NaiveDate = NaiveDate::from_ymd(2000, 1, 2);
+        let d2: NaiveDate = NaiveDate::from_ymd(2001, 1, 1);
         assert_eq!(super::date_is_less(d1, d2), true);
     }
 }
