@@ -23,37 +23,25 @@ fn main() {
     println!("{:#?}", numbers);
 }
 
-fn date_is_less(d1: NaiveDate, d2: NaiveDate) -> bool {
-    let year: bool = d1.year() <= d2.year();
-    let month: bool = d1.month() <= d2.month();
-    let day: bool = d1.day() <= d2.day();
-
-    if year {
-        if month  {
-            if day {
-                true;
-            } else if month && year {
-                false;
-            }
-        }
-    }
-
-    false
-}
-
-/*
 /// true, if date 1 is less(or earlier) than date 2
 fn date_is_less(d1: NaiveDate, d2: NaiveDate) -> bool {
-    if d1.year() <= d2.year() {
-        if d1.month() <= d2.month() && d1.year() <= d2.year() {
-            if d1.day() <= d2.day() && (d1.month() <= d2.month() && d1.year() <= d2.year()) {
-                return true;
-            }
-        }
+    let y1 = d1.year();
+    let m1 = d1.month();
+    let d1 = d1.day();
+
+    let y2 = d2.year();
+    let m2 = d2.month();
+    let d2 = d2.day();
+
+    if y1 > y2 ||
+    (y1 == y2) && m1 > m2 ||
+    ((y1 == y2) && m1 == m2) && d1 > d2 ||
+    (y1 == y2 && m1 == m2 && d1 == d2) {
+        return false;
     }
-    false
+
+    true
 }
-*/
 
 fn calc_numberology_number(d: NaiveDate) -> u8 {
     let mut sum: u32 = 0;
