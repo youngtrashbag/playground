@@ -6,14 +6,14 @@ fn main() {
     // set start date
     let mut start: NaiveDate = NaiveDate::from_ymd(2000, 1, 1);
     // set end date
-    let end: NaiveDate = NaiveDate::from_ymd(2000, 1, 15);
+    let end: NaiveDate = NaiveDate::from_ymd(2020, 12, 31);
 
     // array for counting the numerology numbers
     // note that index 0 stores the count for number 1 -> index 8 stores count for nr 9
     let mut numbers: [u64; 9] = [0; 9];
 
     while date_is_less(start, end) {
-        println!("start: {:?}\nend: {:?}", start, end);
+        //println!("start: {:?}\nend: {:?}", start, end);
         start += Duration::days(1);
         
         let index: usize = calc_numberology_number(start) as usize;
