@@ -61,7 +61,7 @@ fn calc_digit_sum(number: &u32) -> u8 {
 
 #[cfg(test)]
 mod tests {
-    use chrono::{NaiveDate, Datelike};
+    use chrono::{NaiveDate};
     #[test]
     fn calc_numerology_number_works_1() {
         let date: NaiveDate = NaiveDate::from_ymd(2000, 1, 1);
@@ -70,7 +70,87 @@ mod tests {
 
     #[test]
     fn calc_numerology_number_works_2() {
-        let date: NaiveDate = NaiveDate::from_ymd(2002, 12, 14);
-        assert_eq!(super::calc_numberology_number(date), 3);
+        let date: NaiveDate = NaiveDate::from_ymd(2020, 7, 4);
+        assert_eq!(super::calc_numberology_number(date), 7);
+    }
+
+    #[test]
+    /// date is less
+    fn compare_date_1() {
+        let d1: NaiveDate = NaiveDate::from_ymd(2000, 1, 1);
+        let d2: NaiveDate = NaiveDate::from_ymd(2000, 1, 2);
+        assert_eq!(super::date_is_less(d1, d2), true);
+    }
+
+    #[test]
+    /// date is more
+    fn compare_date_1_1() {
+        let d1: NaiveDate = NaiveDate::from_ymd(2000, 1, 2);
+        let d2: NaiveDate = NaiveDate::from_ymd(2000, 1, 1);
+        assert_eq!(super::date_is_less(d1, d2), false);
+    }
+
+    #[test]
+    /// date is more (two days)
+    fn compare_date_1_2() {
+        let d1: NaiveDate = NaiveDate::from_ymd(2000, 1, 3);
+        let d2: NaiveDate = NaiveDate::from_ymd(2000, 1, 1);
+        assert_eq!(super::date_is_less(d1, d2), false);
+    }
+
+    #[test]
+    /// date is the same
+    fn compare_date_2() {
+        let d1: NaiveDate = NaiveDate::from_ymd(2000, 1, 1);
+        let d2: NaiveDate = NaiveDate::from_ymd(2000, 1, 1);
+        assert_eq!(super::date_is_less(d1, d2), false);
+    }
+
+    #[test]
+    /// one day more
+    fn compare_date_3() {
+        let d1: NaiveDate = NaiveDate::from_ymd(2000, 1, 1);
+        let d2: NaiveDate = NaiveDate::from_ymd(2000, 1, 2);
+        assert_eq!(super::date_is_less(d1, d2), true);
+    }
+
+    #[test]
+    /// two days more
+    fn compare_date_3_1() {
+        let d1: NaiveDate = NaiveDate::from_ymd(2000, 1, 1);
+        let d2: NaiveDate = NaiveDate::from_ymd(2000, 1, 3);
+        assert_eq!(super::date_is_less(d1, d2), true);
+    }
+
+    #[test]
+    /// one month more
+    fn compare_date_4() {
+        let d1: NaiveDate = NaiveDate::from_ymd(2000, 1, 1);
+        let d2: NaiveDate = NaiveDate::from_ymd(2000, 2, 1);
+        assert_eq!(super::date_is_less(d1, d2), true);
+    }
+
+    #[test]
+    /// two months more
+    fn compare_date_4_1() {
+        let d1: NaiveDate = NaiveDate::from_ymd(2000, 1, 1);
+        let d2: NaiveDate = NaiveDate::from_ymd(2000, 3, 1);
+        assert_eq!(super::date_is_less(d1, d2), true);
+    }
+
+    #[test]
+    /// one year more
+    fn compare_date_5() {
+        let d1: NaiveDate = NaiveDate::from_ymd(2000, 1, 1);
+        let d2: NaiveDate = NaiveDate::from_ymd(2001, 1, 1);
+        assert_eq!(super::date_is_less(d1, d2), true);
+    }
+
+    #[test]
+    /// two years more
+    fn compare_date_5_1() {
+        let d1: NaiveDate = NaiveDate::from_ymd(2000, 1, 1);
+        let d2: NaiveDate = NaiveDate::from_ymd(2002, 1, 1);
+        assert_eq!(super::date_is_less(d1, d2), true);
     }
 }
