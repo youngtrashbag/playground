@@ -3,6 +3,9 @@
 // 2. words that start with a vowel have -hay appended (apple -> apple-hay)
 // 3. if a word starts with the 'th' digraph both letters will be appended (think -> ink-thay)
 
+// NOTE: this program assumes all letters to be lowercase
+//          also, you cant pass a sentence as argument yet....
+
 use std::env;
 
 // constants (I'm using them similarly as in C/C++)
@@ -35,7 +38,7 @@ fn main() {
     char_words.pop();
 
     for &word in words.iter() {
-        char_words.push(word.to_string().chars().collect());
+        char_words.push(word.chars().collect());
     }
 
     // new variable, because of mutability
@@ -126,4 +129,37 @@ fn is_vowel(letter: char) -> bool {
     }
 
     yes
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    
+    #[test]
+    fn consonant() {
+        let word: Vec<char> = "ketamine".chars().collect();
+        let changed: Vec<char> = "etamine-kay".chars().collect();
+        assert_eq!(pig_latinify(word), changed);
+    }
+
+    #[test]
+    fn vowel() {
+        let word: Vec<char> = "apple".chars().collect();
+        let changed: Vec<char> = "apple-hay".chars().collect();
+        assert_eq!(pig_latinify(word), changed);
+    }
+
+    #[test]
+    fn th() {
+        let word: Vec<char> = "thalamus".chars().collect();
+        let changed: Vec<char> = "alamus-thay".chars().collect();
+        assert_eq!(pig_latinify(word), changed);
+    }
+
+    fn ph() {
+        let word: Vec<char> = "phracking".chars().collect();
+        let changed: Vec<char> = "racking-phay".chars().collect();
+        assert_eq!(pig_latinify(word), changed);
+    }
+
 }
