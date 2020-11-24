@@ -61,7 +61,7 @@ fn main() {
 fn pig_latinify(word: Vec<char>) -> Vec<char>{
     let mut new_word = word.to_vec();
 
-    if word[1] == 'h' {
+    if word.len() > 0 && word[1] == 'h' {
         let first: char = new_word[0];
         let second: char = new_word[1];
         new_word.remove(0);
@@ -77,7 +77,7 @@ fn pig_latinify(word: Vec<char>) -> Vec<char>{
         new_word.push('a');
         new_word.push('y');
 
-    } else if is_consonant(word[0]) {
+    } else if word.len() > 0 && is_consonant(word[0]) {
         let first: char = word[0];
         new_word.remove(0);
 
@@ -88,7 +88,7 @@ fn pig_latinify(word: Vec<char>) -> Vec<char>{
         new_word.push(first);
         new_word.push('a');
         new_word.push('y');
-    } else if is_vowel(word[0]) {
+    } else if word.len() > 0 && is_vowel(word[0]) {
         if EASY_READABILITY {
             new_word.push('-');
         }
@@ -102,9 +102,7 @@ fn pig_latinify(word: Vec<char>) -> Vec<char>{
 }
 
 fn is_consonant(letter: char) -> bool {
-    let consonants: Vec<char> = vec!['b', 'c', 'd', 'f', 'g',
-    'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v',
-    'w', 'x', 'y', 'z', ];
+    let consonants: Vec<char> = "bcdfghjklmnpqrstvwxyz".chars().collect();
 
     let mut yes: bool = false;
 
@@ -118,7 +116,7 @@ fn is_consonant(letter: char) -> bool {
 }
 
 fn is_vowel(letter: char) -> bool {
-    let vowels: Vec<char> = vec!['a', 'e', 'i', 'o', 'u'];
+    let vowels: Vec<char> = "aeiou".chars().collect();
 
     let mut yes: bool = false;
 
@@ -138,27 +136,53 @@ mod tests {
     #[test]
     fn consonant() {
         let word: Vec<char> = "ketamine".chars().collect();
-        let changed: Vec<char> = "etamine-kay".chars().collect();
+        let mut changed: Vec<char> = "etamine".chars().collect();
+        if EASY_READABILITY {
+            changed.push('-');
+        }
+        changed.push('k');
+        changed.push('a');
+        changed.push('y');
         assert_eq!(pig_latinify(word), changed);
     }
 
     #[test]
     fn vowel() {
         let word: Vec<char> = "apple".chars().collect();
-        let changed: Vec<char> = "apple-hay".chars().collect();
+        let mut changed: Vec<char> = "apple".chars().collect();
+        if EASY_READABILITY {
+            changed.push('-');
+        }
+        changed.push('h');
+        changed.push('a');
+        changed.push('y');
         assert_eq!(pig_latinify(word), changed);
     }
 
     #[test]
     fn th() {
         let word: Vec<char> = "thalamus".chars().collect();
-        let changed: Vec<char> = "alamus-thay".chars().collect();
+        let mut changed: Vec<char> = "alamus".chars().collect();
+        if EASY_READABILITY {
+            changed.push('-');
+        }
+        changed.push('t');
+        changed.push('h');
+        changed.push('a');
+        changed.push('y');
         assert_eq!(pig_latinify(word), changed);
     }
 
     fn ph() {
         let word: Vec<char> = "phracking".chars().collect();
-        let changed: Vec<char> = "racking-phay".chars().collect();
+        let mut changed: Vec<char> = "racking".chars().collect();
+        if EASY_READABILITY {
+            changed.push('-');
+        }
+        changed.push('p');
+        changed.push('h');
+        changed.push('a');
+        changed.push('y');
         assert_eq!(pig_latinify(word), changed);
     }
 
