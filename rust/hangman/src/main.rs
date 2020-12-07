@@ -1,15 +1,16 @@
-use std::io::{self, BufReader};
-use std::io::prelude::*;
-use std::fs::File;
+extern crate rand;
+use rand::prelude::*;
+mod utils;
 
 fn main() {
     // words are separated by newlines
-    const wordlist: &str = "./words.txt";
+    let words: Vec<String> = utils::file_to_vec("words.txt".to_string());
 
-    let words;
-}
+    // select a random word
+    let mut rng = rand::thread_rng();
+    let num: usize = rng.gen_range(0, words.len());
+    // this should create a copy I think... right ?
+    let word: String = words[num].chars().collect::<String>();
 
-fn readLines(path: String) -> io::Result<Ok(str), std::error> {
-    let f = File::open(path)?;
-    let f = BufReader::new(f);
+    println!("word: {:#?}", word);
 }
