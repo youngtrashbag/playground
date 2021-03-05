@@ -60,3 +60,9 @@ img {
   max-width: 320px;
   max-height: 240px;
 }
+
+#newTitle {
+  border-style: dashed;
+  border-color: darksalmon;
+  border-width: 2px;
+}
