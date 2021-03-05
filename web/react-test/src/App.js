@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import './App.css';
 
-const App = () => {
+const HoundImage = () => {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState();
 
@@ -22,6 +22,15 @@ const App = () => {
     });
   }, []);
 
+  var element = (<h1>Loading...</h1>);
+  if (!isLoading) {
+    element = <img src={data.url} alt="dog image" />
+  }
+
+  return element;
+}
+
+const App = () => {
   // change document attribtues
   useEffect(() => {
     document.title = "low res hounds"
@@ -29,15 +38,11 @@ const App = () => {
     window.sessionStorage.setItem("secret", "kiffä hound");
   });
 
-  var element = (<h1>Loading...</h1>);
-  if (!isLoading) {
-    element = <img src={data.url} alt="dog image" />
-  }
-
   return (
     <div className="container">
+      <h1>low res hounds....</h1>
       <div className="subContainer">
-        {element}
+        <HoundImage />
       </div>
     </div>
   );
