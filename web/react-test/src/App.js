@@ -24,7 +24,7 @@ const App = () => {
 
   // change document attribtues
   useEffect(() => {
-    document.title = "Dog images or something"
+    document.title = "low res hounds"
     // funny secret meme
     window.sessionStorage.setItem("secret", "kiffä hound");
   });
