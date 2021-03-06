@@ -1,67 +1,47 @@
-import React, {useEffect, useState} from 'react';
-import axios from 'axios';
-import './App.css';
+import React, {useEffect, useState} from "react";
 
-const selection = [
+import HoundImage from "./houndImage";
+import About from "./about";
+import "./App.css";
+
+/*const selection = [
   {
     title: "low res hounds....",
-    secret: "kiffä hound"
+    secret: "kiffä hound",
+    component: (<HoundImage />)
   },
   {
     title: "!",
-    secret: "chef hound"
+    secret: "chef hound",
+    component: (<h1>kiffä</h1>)
   }
-]
-
-const HoundImage = () => {
-  const [isLoading, setLoading] = useState(true);
-  const [data, setData] = useState();
-
-  useEffect(() => {
-    axios({
-      method: "get",
-      baseURL: "https://random.dog",
-      url: '/woof.json',
-    }).then(
-      response => {
-        // ok
-        setData(response.data);
-        setLoading(false);
-      }
-    ).catch(err => {
-      console.log("Axios err: ", err.message)
-    });
-  }, []);
-
-  var element = (<h1>Loading...</h1>);
-  if (!isLoading) {
-    element = <img src={data.url} alt="dog image" />
-  }
-
-  return element;
-}
+]*/
 
 const App = () => {
-  const [metadata, setMetadata] = useState(selection[0]);
-  const [title, setTitle] = useState(metadata.title);
+  //const [metadata, setMetadata] = useState(selection[0]);
+  const [component, setComponent] = useState((<HoundImage />));
 
   useEffect(() => {
-    document.title = title
+    if (window.location.pathname === encodeURI("/about")) {
+      setComponent(About);
+    } else if (window.location.pathname === encodeURI("/kiffä")) {
+      setComponent(<h1>kiffä</h1>)
+    }
 
-    window.sessionStorage.setItem("secret", metadata.secret);
+    //window.sessionStorage.setItem("secret", "value");
   }, [])
 
   return (
     <div className="container">
-      <h1>{title}</h1>
+      <h1>yeees</h1>
       <input
         id="newTitle"
         type="text"
         placeholder="change title of this page"
-        onChange={ () => {setTitle(document.getElementById("newTitle").value)} }
+        onChange={ () => {document.title = document.getElementById("newTitle").value} }
       />
       <div className="subContainer">
-        <HoundImage />
+        {component}
       </div>
     </div>
   );
