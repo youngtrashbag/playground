@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import ReactDOM from 'react-dom';
 
 import HoundImage from "./houndImage";
 import About from "./about";
@@ -16,6 +17,24 @@ import "./App.css";
     component: (<h1>kiffä</h1>)
   }
 ]*/
+
+const Message1 = (msg) => {
+  return (
+    <p>{msg}</p>
+  )
+}
+
+const handleChange = (event) => {
+  const msg = Message1(event.target.value);
+  ReactDOM.render(
+    msg,
+    document.getElementById("message")
+  );
+
+  var element = document.getElementById("message");
+  element.style.visibility = "visible";
+  //element.innerHTML = [(<Message2 msg={event.value} />)];
+}
 
 const App = () => {
   //const [metadata, setMetadata] = useState(selection[0]);
@@ -35,12 +54,13 @@ const App = () => {
     <div className="container">
       <h1>yeees</h1>
       <input
-        id="newTitle"
         type="text"
-        placeholder="change title of this page"
-        onChange={ () => {document.title = document.getElementById("newTitle").value} }
+        placeholder="write a message"
+        onChange={ handleChange }
       />
       <div className="subContainer">
+        <div id="message" className="message"></div>
+        <br/>
         {component}
       </div>
     </div>
