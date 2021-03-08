@@ -4,17 +4,12 @@ const GenerateText = (text) => {
   const arr = text.split("");
 
   var jsx = [];
-  var delay = 0;
   arr.forEach((c) => {
-    var delayms = delay + "ms";
-
     jsx.push((
-      <div className="Char" style={{animationDelay: delayms}}>
+      <div className="Char">
         {c}
       </div>
     ));
-
-    delay += 150;
   })
 
   return jsx;
