@@ -1,0 +1,48 @@
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.Container {
+  margin: 5%;
+  padding: 50px;
+  background-color: deepskyblue;
+}
+
+.Text {
+  transform: translate3d(20,20,0);
+  animation:
+    circular 5s linear infinite;
+}
+
+.Text > .Char {
+  display: inline-block;
+  margin: 2px;
+  color: coral;
+  animation:
+    spin-text 5s linear infinite reverse;
+}
+
+/*@keyframes circular {
+  0% {transform: translateX(0px); transform: translateY(0px);}
+  10% {transform: translateX(10px); transform: translateY(10px);}
+  20% {transform: translateX(); transform: translateY();}
+  30% {transform: translateX(); transform: translateY();}
+  40% {transform: translateX(); transform: translateY();}
+  50% {transform: translateX(50px); transform: translateY(50px);}
+  60% {transform: translateX(); transform: translateY();}
+  70% {transform: translateX(); transform: translateY();}
+  80% {transform: translateX(); transform: translateY();}
+  90% {transform: translateX(); transform: translateY();}
+}*/
+
+@keyframes circular {
+  /*0% {offset-rotate: 0deg;}*/
+  100% {transform: rotate(1turn);}
+}
+
+@keyframes spin-text {
+  100% {transform: rotate(360deg);}
+}
