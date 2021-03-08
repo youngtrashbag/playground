@@ -1,0 +1,18 @@
+.Container {
+  font-size: 30px;
+  letter-spacing: 10%;
+  color: black;
+}
+
+.Container > .Char {
+  display: inline-block;
+  animation:
+  /* using ease as animation-timing-function makes it jitter */
+    wave 2s linear infinite;
+}
+
+@keyframes wave {
+  /*0%, 50%, 100% {transform: translateY(0);}*/
+  25% {transform: translateY(-15px);}
+  75% {transform: translateY(15px);}
+}
