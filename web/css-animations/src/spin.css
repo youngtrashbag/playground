@@ -1,0 +1,20 @@
+.Container {
+  animation:
+    circular 5s linear infinite;
+}
+
+.Container > .Char {
+  display: inline-block;
+  margin: 2px;
+  color: coral;
+  animation:
+    spin-text 5s linear infinite reverse;
+}
+
+@keyframes circular {
+  100% {transform: rotate(1turn);}
+}
+
+@keyframes spin-text {
+  100% {transform: rotate(360deg);}
+}

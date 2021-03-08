@@ -1,27 +1,26 @@
+import {useEffect, useState} from "react";
+
 import './App.css';
 
-const GenerateText = (text) => {
-  const arr = text.split("");
+import Spin from "./spin";
 
-  var jsx = [];
-  arr.forEach((c) => {
-    jsx.push((
-      <div className="Char">
-        {c}
-      </div>
-    ));
-  })
-
-  return jsx;
+const Links = () => {
+  return (
+    <a href="spin"><p>spin</p></a>
+  );
 }
 
 function App() {
+  const [component, setComponent] = useState(Links);
+  useEffect(() => {
+    if (window.location.pathname == encodeURI("/spin")) {
+      setComponent(Spin("Loading..."));
+    }
+  }, []);
   return (
     <div className="App">
-      <div className="Container">
-        <div className="Text">
-          {GenerateText("Loading...")}
-        </div>
+      <div className="TopContainer">
+        {component}
       </div>
     </div>
   );
