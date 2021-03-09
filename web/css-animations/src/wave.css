@@ -5,14 +5,15 @@
 }
 
 .Container > .Char {
+  transform: translateY(-15px);
   display: inline-block;
-  animation:
-  /* using ease as animation-timing-function makes it jitter */
-    wave 2s linear infinite;
+  /* using ease-in-out as animation-timing-function makes it jitter */
+  animation: wave 2s ease-in-out infinite backwards;
 }
 
 @keyframes wave {
-  /*0%, 50%, 100% {transform: translateY(0);}*/
-  25% {transform: translateY(-15px);}
-  75% {transform: translateY(15px);}
+  /*0% {transform: translateY(0);}*/
+  /*25% {transform: translateY(-15px);}
+  75% {transform: translateY(15px);}*/
+  50% {transform: translateY(15px);}
 }
