@@ -37,10 +37,13 @@ function App() {
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
-        { ({values, errors, touched}) => {
+        { ({values, errors, touched, handleChange}) => {
+          var {text, newStep} = stepButton(step);
+
           return (<Form>
-            {renderStep(step, values, errors, touched)}
-            {stepButton(step)}
+            {renderStep(step, values, errors, touched, handleChange)}
+            <br />
+            <button type="submit" >{text}</button>
           </Form>);
         }}
       </Formik>
