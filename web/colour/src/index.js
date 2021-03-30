@@ -5,10 +5,13 @@ import App from './App';
 import config from './config.json';
 
 document.title = config.title;
+/*
+    Great Library: https://github.com/bgrins/TinyColor
+*/
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+    <React.StrictMode>
+        <App />
+    </React.StrictMode>,
+    document.getElementById('root')
 );
