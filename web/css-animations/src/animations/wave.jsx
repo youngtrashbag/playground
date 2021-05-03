@@ -16,13 +16,21 @@ const Wave = () => {
   arr.forEach((c) => {
     var delayms = delay + "ms";
 
-    jsx.push((
-      <div className="Char" style={{animationDelay: delayms}}>
-        {c}
-      </div>
-    ));
+    if (c == " ") {
+      jsx.push((
+        <div className="Char">
+          <div>&nbsp;</div>
+        </div>
+      ));
+    } else {
+      jsx.push((
+        <div className="Char" style={{animationDelay: delayms}}>
+          {c}
+        </div>
+      ));
 
-    delay += 200;
+      delay += 200;
+    }
   })
 
   return (
