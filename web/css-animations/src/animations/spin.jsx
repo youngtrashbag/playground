@@ -1,6 +1,9 @@
+import { useParams } from "react-router-dom";
+
 import "./spin.css";
 
-const Spin = (text) => {
+const Spin = () => {
+  const { text } = useParams();
   const arr = text.split("");
 
   var jsx = [];
@@ -13,7 +16,7 @@ const Spin = (text) => {
   })
 
   return (
-    <div className="Container">
+    <div className="SpinContainer">
       {jsx}
     </div>
   )

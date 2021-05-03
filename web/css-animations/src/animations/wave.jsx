@@ -1,6 +1,10 @@
+import { useParams } from "react-router-dom";
+
 import "./wave.css";
 
-const Wave = (text) => {
+const Wave = () => {
+  const { text } = useParams();
+
   if (text === null || text === undefined) {
     text = "...";
   }

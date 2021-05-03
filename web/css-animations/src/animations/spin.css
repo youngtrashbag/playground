@@ -1,9 +1,9 @@
-.Container {
+.SpinContainer {
   animation:
     circular 5s linear infinite;
 }
 
-.Container > .Char {
+.SpinContainer > .Char {
   display: inline-block;
   margin: 2px;
   color: coral;
